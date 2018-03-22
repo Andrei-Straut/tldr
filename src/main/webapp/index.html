@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Andrei Straut">
+        <base href="">
+
+        <title>tldr;</title>
+
+        <link rel="icon" type="image/png" href="img/portfolio/as-min.png">
+
+        <!-- Bootstrap Core CSS -->
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <!-- jQuery -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <!-- vis.js -->
+        <link href="vendor/vis-4.18.0/dist/vis-timeline-graph2d.min.css" rel="stylesheet" type="text/css" />
+        <!-- TEDR -->
+        <link href="styles/master.css" rel="stylesheet" type="text/css" />
+        <link href="styles/test-levels.css" rel="stylesheet" type="text/css" />
+
+        <!-- Plugin JavaScript -->
+        <script src="vendor/jquery/jquery.easing.min.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!-- Vis.js JavaScript -->
+        <script src="vendor/vis-4.18.0/dist/vis.min.js"></script>
+        <!-- TEDR -->
+        <script src="scripts/test-levels.js"></script>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Google Analytics -->
+        <script>
+            if (navigator.userAgent.indexOf("Speed Insights") == -1) {
+                (function (i, s, o, g, r, a, m) {
+                    i['GoogleAnalyticsObject'] = r;
+                    i[r] = i[r] || function () {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date();
+                    a = s.createElement(o),
+                            m = s.getElementsByTagName(o)[0];
+                    a.async = 1;
+                    a.src = g;
+                    m.parentNode.insertBefore(a, m)
+                })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+                ga('create', 'UA-100610555-1', 'auto');
+                ga('send', 'Test Evolution');
+            }
+        </script>
+    </head>
+
+    <body id="page-top">
+
+        <!-- Content above graph -->
+        <header>
+            <div class="container" id="upcontent" tabindex="-1">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <img class="img-responsive" src="img/profile-min.png" alt="">
+                        <div class="explanation">
+                            <h1 class="name">Test Levels During Refactor</h1>
+                            <hr class="star-light">
+                            <span class="explanation-text">A story of test runs during a 7-day refactoring session</span><br/>
+                            <span class="explanation-text">Scroll down for graph and explanations</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Graph-->
+        <div id="tests" class="bordered"></div>
+
+        <!-- Content below graph -->
+        <br/>
+        <div class="row">
+            <div class="col-lg-12" id="test-controls">
+                <div class="row">
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-6">
+                        <div class="col-lg-2">
+                            <label class="checkbox-inline">
+                                <input id="toggleTotal" name="toggleTotal" type="checkbox" checked onchange="toggleVisGroups();">
+                                Show/Hide Total
+                            </label>
+                        </div>
+                        <div class="col-lg-2">
+                            <label class="checkbox-inline">
+                                <input id="toggleRun" name="toggleRun" type="checkbox" checked onchange="toggleVisGroups();">
+                                Show/Hide Run
+                            </label>
+                        </div>
+                        <div class="col-lg-2">
+                            <label class="checkbox-inline">
+                                <input id="togglePassed" name="togglePassed" type="checkbox" checked onchange="toggleVisGroups();">
+                                Show/Hide Passed
+                            </label>
+                        </div>
+                        <div class="col-lg-2">
+                            <label class="checkbox-inline">
+                                <input id="toggleFailed" name="toggleFailed" type="checkbox" checked onchange="toggleVisGroups();">
+                                Show/Hide Failed
+                            </label>
+                        </div>
+                        <div class="col-lg-2">
+                            <label class="checkbox-inline">
+                                <input id="toggleErrors" name="toggleErrors" type="checkbox" checked onchange="toggleVisGroups();">
+                                Show/Hide Errors
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-3"></div>
+                </div>
+            </div>
+        </div>
+        <hr class="star-light">
+
+        <!-- Content below graph -->
+        <header>
+            <div class="container" id="downcontent" tabindex="-1">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <img class="img-responsive" src="img/profile-min.png" alt="">
+                        <div class="explanation">
+                            <h1 class="name-md">What is this?</h1>
+                            <p class="explanation-text"><span>
+                                    A history of tests run during the refactoring of a software component<br/>
+                                    ~10.000 lines of code, period ~7 days
+                                </span></p>
+                            <hr class="star-light">
+                        </div>
+
+                        <div class="explanation">
+                            <h1 class="name-md">What kind of tests were run?</h1>
+                            <p class="explanation-text"><span>
+                                    Blackbox/Integration tests. Input fed to the component, output tested<br/>
+                                    Pure unit tests not included, as the whole code was thrown out and replaced<br/>
+                                    The only thing preserved from the original code was the component API<br/>
+                                </span></p>
+                            <hr class="star-light">
+                        </div>
+
+                        <div class="explanation">
+                            <h1 class="name-md">Why is this important?</h1>
+                            <p class="explanation-text"><span>
+                                    <span>
+                                        It shows a very typical evolution of test results during a very typical refactor:<br/>
+                                        (ups and downs, problems introduced, detected, corrected, code reverts, new tests)
+                                    </span>
+                                </span></p>
+                            <p class="explanation-text"><span>
+                                    It shows (again) how having tests helps build confidence when making changes to software
+                                </span></p>
+                            <p class="explanation-text"><span>
+                                    It shows (again) how integration tests can help preserve functionality,<br/>
+                                    even if the concrete implementation of the tested component changes completely
+                                </span></p>
+                            <hr class="star-light">
+                        </div>
+
+                        <div class="explanation">
+                            <h1 class="name-md">How do I read/use this?</h1>
+                            <p class="explanation-text"><span>
+                                    If you click on the graph, you can zoom in, out, or pan to a period of interest<br/>
+                                    You can also show or hide certain categories
+                                </span></p>
+                            <p class="explanation-text"><span>
+                                    To return to page scroll, simply click somewhere out of the graph
+                                </span></p>
+                            <p class="explanation-text"><span>
+                                    The graph shows the test results, for each test run, in intervals approximated to 15 mins
+                                </span></p>
+                            <p class="explanation-text"><span>
+                                    Some notable events are also marked (refactor start, significant test changes, etc)<br/>
+                                    Positive changes are marked in green, negative in red
+                                </span></p>
+                            <hr class="star-light">
+                        </div>
+
+                        <div class="explanation">
+                            <h1 class="name-md">How was this generated?</h1>
+                            <p class="explanation-text"><span>
+                                    After each test run, I took the results from Jenkins, formatted them as JSON,<br/>
+                                    and with the help of my beloved <a href='http://visjs.org/' target='_blank'>vis.js</a>, I created a simple graph to display the info
+                                </span></p>
+                            <p class="explanation-text"><span>
+                                    You can find the code on <a href='https://github.com/Andrei-Straut/tldr' target='_blank'>GitHub</a>
+                                </span></p>
+                            <hr class="star-light">
+                        </div>
+
+                        <div class="explanation">
+                            <h1 class="name-md">Can I reuse? How?</h1>
+                            <p class="explanation-text"><span>
+                                    Sure! Go to <a href='https://github.com/Andrei-Straut/tldr' target='_blank'>GitHub</a>, clone the repository, and you can get started<br/>
+                                    You will need to have Java, Maven and a web server (JBoss, Glassfish, Tomcat, etc) installed<br/>
+                                </span></p>
+                            <p class="explanation-text"><span>
+                                    If you only want to play with the graph itself, the data is <a href='./scripts/test-levels.js' target='_blank'>here</a><br/>
+                                    The JavaScript that puts it all together is <a href='./scripts/test-levels-main.js' target='_blank'>here</a><br/>
+                                    You will also need <a href='http://visjs.org/' target='_blank'>vis.js</a>
+                                </span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <script src="scripts/test-levels-main.js"></script>
+
+        <!-- Deferred CSS Loading -->
+        <noscript id="deferred-styles">
+        <!-- Custom Fonts -->
+        <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+        <!-- Font-Awesome -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+        </noscript>
+
+        <!-- Deferred CSS Loading - JS -->
+        <script>
+            var loadDeferredStyles = function () {
+                var addStylesNode = document.getElementById("deferred-styles");
+                var replacement = document.createElement("div");
+                replacement.innerHTML = addStylesNode.textContent;
+                document.body.appendChild(replacement)
+                addStylesNode.parentElement.removeChild(addStylesNode);
+            };
+            var raf = requestAnimationFrame || mozRequestAnimationFrame || webkitRequestAnimationFrame || msRequestAnimationFrame;
+            if (raf) {
+                raf(function () {
+                    window.setTimeout(loadDeferredStyles, 0);
+                });
+            } else {
+                window.addEventListener('load', loadDeferredStyles);
+            }
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,58 @@
+body, html {
+    font-family: sans-serif;
+    height: 98%;
+}
+
+div.bordered {
+    border-style: solid;
+    height: 90%;
+    background: #FFFFFF;
+}
+.group-total {
+    fill: #000000;
+    fill-opacity:0 !important;
+    stroke-width:4px;
+    stroke: #000000;
+}
+.group-skipped {
+    fill: #ffffff;
+    fill-opacity:0 !important;
+    stroke-width:2px;
+    stroke: #000000;
+}
+.group-run {
+    fill: #00bcd4;
+    fill-opacity:0 !important;
+    stroke-width:4px;
+    stroke: #00bcd4;
+}
+.group-passed {
+    fill: #00f201;
+    fill-opacity:0;
+    stroke-width:3px;
+    stroke: #029200;
+}
+.group-failed {
+    fill: #ffc107;
+    fill-opacity:0;
+    stroke-width:3px;
+    stroke: #ffc107;
+}
+.group-error {
+    fill: #ec0c21;
+    fill-opacity:0;
+    stroke-width:3px;
+    stroke: #ec0c21;
+}
+.group-events-red {
+    fill: #ec0c21;
+    fill-opacity:0 !important;
+    stroke-width:1px;
+    stroke: #ec0c21 !important;
+}
+.group-events-green {
+    fill: #00f201;
+    fill-opacity:0 !important;
+    stroke-width:1px;
+    stroke: #00f201 !important;
+}
